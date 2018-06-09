@@ -1,0 +1,26 @@
+/*fetch method accepts return data after concatenation of the https://api.github.com/users/pradeepkrishnarao value is passed to Promise.resolve or Promise.reject to return data.*/
+fetch('https://api.github.com/users/pradeepkrishnarao').then(response => { 
+    if(response.ok){    
+            let data = response.json();
+            return Promise.resolve(data);
+    }else{
+            return Promise.reject({
+            status: response.status,
+            statusText: response.statusText
+        })
+}
+}).then(function(data){ // fetch method data is the outcome of the Promise result of asynchronous operation.
+                console.log(data); //log the data
+                return "Success";
+    }).catch(error => { //catch error displays system generated error message of the promise asynchronous operation.
+            if(error.status == 404){
+                console.log("Input user name is incorrect, 404 error");
+                return "Input user name is incorrect, 404 error";
+        }else{
+                console.log(error); //log the data
+                return "Request failed";
+        }
+    });
+
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: "Success"
+VM45:13 {login: "pradeepkrishnarao", id: 36490187, node_id: "MDQ6VXNlcjM2NDkwMTg3", avatar_url: "https://avatars3.githubusercontent.com/u/36490187?v=4", gravatar_id: "", …}avatar_url: "https://avatars3.githubusercontent.com/u/36490187?v=4"bio: nullblog: ""company: nullcreated_at: "2018-02-14T21:23:25Z"email: nullevents_url: "https://api.github.com/users/pradeepkrishnarao/events{/privacy}"followers: 0followers_url: "https://api.github.com/users/pradeepkrishnarao/followers"following: 0following_url: "https://api.github.com/users/pradeepkrishnarao/following{/other_user}"gists_url: "https://api.github.com/users/pradeepkrishnarao/gists{/gist_id}"gravatar_id: ""hireable: nullhtml_url: "https://github.com/pradeepkrishnarao"id: 36490187location: nulllogin: "pradeepkrishnarao"name: nullnode_id: "MDQ6VXNlcjM2NDkwMTg3"organizations_url: "https://api.github.com/users/pradeepkrishnarao/orgs"public_gists: 0public_repos: 33received_events_url: "https://api.github.com/users/pradeepkrishnarao/received_events"repos_url: "https://api.github.com/users/pradeepkrishnarao/repos"site_admin: falsestarred_url: "https://api.github.com/users/pradeepkrishnarao/starred{/owner}{/repo}"subscriptions_url: "https://api.github.com/users/pradeepkrishnarao/subscriptions"type: "User"updated_at: "2018-06-08T12:22:31Z"url: "https://api.github.com/users/pradeepkrishnarao"__proto__: Object
